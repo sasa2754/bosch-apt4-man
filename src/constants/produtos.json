@@ -4,13 +4,44 @@
     "name": "Galaxy Z Fold 6",
     "desc": "Samsung",
     "value": "12.419,10",
-    "image": "../assets/Galaxy-Z-Fold-6.webp"
+    "categoria": "Celular",
+    "status": true,
+    "image": "../../src/assets/Galaxy-Z-Fold-6.webp"
   },
   {
     "id": 2,
     "name": "Galaxy S24 Ultra",
     "desc": "Samsung",
     "value": "8.999,10",
-    "image": "../assets/Galaxy-S24-Ultra.png"
+    "categoria": "Celular",
+    "status": true,
+    "image": "../../src/assets/Galaxy-S24-Ultra.png"
+  },
+  {
+    "id": 3,
+    "name": "Galaxy A55 5G (128GB)",
+    "desc": "Samsung",
+    "value": "2.609,10",
+    "categoria": "Celular",
+    "status": false,
+    "image": "../../src/assets/Galaxy A55 5G (128GB).webp"
+  },
+  {
+    "id": 4,
+    "name": "Smart TV 50' QLED 4K",
+    "desc": "Samsung",
+    "value": "2.697,05",
+    "categoria": "Televisão",
+    "status": false,
+    "image": "../../src/assets/SmartTV_50_QLED_4K.avif"
+  },
+  {
+    "id": 5,
+    "name": "Galaxy Watch Ultra",
+    "desc": "Samsung",
+    "value": "4.499,10",
+    "categoria": "Relógio",
+    "status": false,
+    "image": "../../src/assets/Galaxy-Watch-Ultra.webp"
   }
 ]
