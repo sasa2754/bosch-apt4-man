@@ -42,7 +42,15 @@ function App() {
           <div className={style.cardBox}>
             {produtos.map((item) => {
               return(
-                <Card name={item.name} desc={item.desc} value={item.value} image={item.image} key={item.id}/>
+                <Card 
+                  categoria={item.categoria}
+                  desc={item.desc}
+                  name={item.name}
+                  id={item.id}
+                  image={item.image}
+                  value={item.value}
+                  status={item.status}
+                />
               )
             })}
           </div>
