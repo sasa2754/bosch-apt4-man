@@ -5,8 +5,9 @@ import style from './App.module.css'
 import CardApi from './components/CardApi'
 import Card from './components/CardProducts'
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
+import DraggableComp from './components/DraggableComp'
+import Draggable from 'react-draggable'
 
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
   const [data, setData] = useState([])
   const [page, setPage] = useState("")
   const [name, setName] = useState("")
+  const [showDraggable, setShowDraggable] = useState(0);
+  const [dataDraggable, setDataDraggable] = useState("");
 
+  let nome, species, gender, type, status;
 
   useEffect(() => {
     api.get(`/character/?page=${page}&name=${name}`).then((response) => {
@@ -40,7 +44,24 @@ function App() {
       }
       console.error(error)
     })
-  }, [page, name])
+  }, [page, name]);
+
+  // console.log(showDraggable);
+
+  pegarBichoCerto(showDraggable)
+  
+  function pegarBichoCerto(showDraggable) {
+    api.get(`/character/?id=${showDraggable}`).then((response) => {
+      if(!response.data.results){
+        console.log("Vazio")
+      }
+      setDataDraggable(response.data.results)
+      // console.log(dataDraggable);
+    });
+       // <DraggableComp name={id.name} species={id.species} gender={id.gender} image={id.image} />
+
+
+  }
 
   return (
     <>
@@ -61,21 +82,24 @@ function App() {
           <div className={style.cardBox}>
             {produtos.map((item) => {
               return(
-                <Card 
-                  categoria={item.categoria}
-                  desc={item.desc}
-                  name={item.name}
-                  id={item.id}
-                  image={item.image}
-                  value={item.value}
-                  status={item.status}
-                />
+                <>
+                  <Card 
+                    categoria={item.categoria}
+                    desc={item.desc}
+                    name={item.name}
+                    id={item.id}
+                    image={item.image}
+                    value={item.value}
+                    status={item.status}
+                  />
+                </>
               )
             })}
           </div>
         </>
       }
      {show === "api" &&
+
         <>
           <h2>Rick and Morty API</h2>
             <div>
@@ -83,12 +107,15 @@ function App() {
                <input type="text" placeholder="Name" value={name} onChange={(event) => setName(event.target.value)}/>
             </div>
             <div className={style.cardBox}>
-            {data.map((item) => { 
-             return(
-              <div key={item.id}>
-                <CardApi name={item.name} species={item.species} gender={item.gender} image={item.image} />
-                {/* <button onClick={() => {}}>Info</button> */}
-              </div>
+            
+            {data.map((item, index) => { 
+              return(
+                <>
+                <div key={index}>
+                  <CardApi name={item.name} species={item.species} gender={item.gender} image={item.image} type={item.type} status={item.status}/>
+                  <button onClick={() => setShowDraggable(index)}>Info</button>
+                </div>
+              </>
               )
            })}
             </div>

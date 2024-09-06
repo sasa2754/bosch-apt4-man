@@ -1,6 +1,6 @@
 import style from './Card.module.css'
 /* eslint-disable react/prop-types */
-export default function Card({status, name, desc, value, image, categoria, id}) {
+export default function Card({status, name, desc, value, image}) {
   return (
       <div className={style.card}>
         <div className={status ? style.bolinhaVerde : style.bolinhaVermelha}>.</div>
