@@ -8,6 +8,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DraggableComp from './components/DraggableComp'
 import Draggable from 'react-draggable'
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import "leaflet-defaulticon-compatibility";
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+} from 'https://cdn.esm.sh/react-leaflet'
 
 
 function App() {
@@ -15,10 +23,10 @@ function App() {
   const [data, setData] = useState([])
   const [page, setPage] = useState("")
   const [name, setName] = useState("")
-  const [showDraggable, setShowDraggable] = useState(0);
-  const [dataDraggable, setDataDraggable] = useState("");
+  // const [showDraggable, setShowDraggable] = useState(0);
+  // const [dataDraggable, setDataDraggable] = useState("");
 
-  let nome, species, gender, type, status;
+  // let nome, species, gender, type, status;
 
   useEffect(() => {
     api.get(`/character/?page=${page}&name=${name}`).then((response) => {
@@ -48,20 +56,20 @@ function App() {
 
   // console.log(showDraggable);
 
-  pegarBichoCerto(showDraggable)
+  // pegarBichoCerto(showDraggable)
   
-  function pegarBichoCerto(showDraggable) {
-    api.get(`/character/?id=${showDraggable}`).then((response) => {
-      if(!response.data.results){
-        console.log("Vazio")
-      }
-      setDataDraggable(response.data.results)
-      // console.log(dataDraggable);
-    });
-       // <DraggableComp name={id.name} species={id.species} gender={id.gender} image={id.image} />
+  // function pegarBichoCerto(showDraggable) {
+  //   api.get(`/character/?id=${showDraggable}`).then((response) => {
+  //     if(!response.data.results){
+  //       console.log("Vazio")
+  //     }
+  //     setDataDraggable(response.data.results)
+  //     // console.log(dataDraggable);
+  //   });
+  //      // <DraggableComp name={id.name} species={id.species} gender={id.gender} image={id.image} />
 
 
-  }
+  // }
 
   return (
     <>
@@ -125,7 +133,12 @@ function App() {
         <>
       <h2>Mapa</h2>
           <div>
-              mapa aqui
+              <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+              </MapContainer>
           </div>
          </>
       }
