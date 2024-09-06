@@ -1,31 +1,50 @@
 import { useState, useEffect } from 'react'
-import { Card } from './components/Card'
 import produtos from './constants/produtos.json'
 import { api } from "./api/rmApi"
 import style from './App.module.css'
+import CardApi from './components/CardApi'
+import Card from './components/CardProducts'
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [show, setShow] = useState("")
   const [data, setData] = useState([])
   const [page, setPage] = useState("")
+  const [name, setName] = useState("")
 
 
   useEffect(() => {
-    api.get(`/character/?page=${page}`).then((response) => {
+    api.get(`/character/?page=${page}&name=${name}`).then((response) => {
       if(!response.data.results){
         console.log("Vazio")
       }
       setData(response.data.results)
     }).catch((error) => {
       if(error.response.status === 404){
-        console.log("Esta pagina nao contem este personagem")
+
+        toast("Esta página não contém personagens", {
+          position: "top-right",
+          pauseOnHover: true,
+          draggable: true,
+          style: {
+            background: "linear-gradient(90deg, rgba(182,18,18,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)",
+            color: "white"
+          }
+        });
+
+        setData([])
+        
       }
       console.error(error)
     })
-  }, [page])
+  }, [page, name])
 
   return (
     <>
+    <ToastContainer/>
     {/* Header */}
     <div className={style.wrapBtns}> 
       <button onClick={() => setShow("prod")}>Produtos</button>
@@ -61,12 +80,13 @@ function App() {
           <h2>Rick and Morty API</h2>
             <div>
                <input type="text" placeholder="1/43" value={page} onChange={(event) => setPage(event.target.value)}/>
+               <input type="text" placeholder="Name" value={name} onChange={(event) => setName(event.target.value)}/>
             </div>
-            <div>
+            <div className={style.cardBox}>
             {data.map((item) => { 
              return(
               <div key={item.id}>
-                <Card name={item.name} desc={item.species} value={item.gender} image={item.image} />
+                <CardApi name={item.name} species={item.species} gender={item.gender} image={item.image} />
                 {/* <button onClick={() => {}}>Info</button> */}
               </div>
               )
