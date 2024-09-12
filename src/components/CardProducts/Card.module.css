@@ -1,42 +1,44 @@
-.centralize {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cardBox {
-    max-width: 1200px;
-    width: 90%;
-    flex-wrap: wrap;
-}
-
 .card {
     background-color: white;
     color: black;
-    max-width: 263px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 250px;
     width: 90%;
-    text-align: center;
+    min-height: 350px;
     padding: 20px;
-    margin: 5px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.39);
+    box-shadow: 0px 0px 3px 3px rgba(255, 1, 255, 0.527);
+}
+
+.card > h1 {
+    font-size: 30px;
+}
+
+.card > h2 {
+    font-size: 25px;
+}
+
+.card > img {
+    width: 150px;
 }
 
 .bolinhaVerde {
     background-color: green;
-    max-width: 10px;
-    max-width: 15px;
-    color: transparent;
     height: 15px;
+    aspect-ratio: 1/1;
+    color: transparent;
     border-radius: 50%;
     box-shadow: 0px 0px 5px 1px green, inset 0px 0px 5px 1px rgba(255, 255, 255, 0.829);
 }
 
 .bolinhaVermelha {
     background-color: red;
-    max-width: 15px;
-    color: transparent;
     height: 15px;
+    aspect-ratio: 1/1;
+    color: transparent;
     border-radius: 50%;
     box-shadow: 0px 0px 5px 1px red, inset 0px 0px 5px 1px rgba(255, 255, 255, 0.829);
 }
