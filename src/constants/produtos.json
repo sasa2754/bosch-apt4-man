@@ -41,7 +41,7 @@
     "desc": "Samsung",
     "value": "4.499,10",
     "categoria": "Relógio",
-    "status": false,
+    "status": true,
     "image": "../../src/assets/Galaxy-Watch-Ultra.webp"
   }
 ]

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import produtos from './constants/produtos.json'
 import { api } from "./api/rmApi"
-import style from './App.module.css'
 import CardApi from './components/CardApi'
 import Card from './components/CardProducts'
 import { ToastContainer, toast } from 'react-toastify';
+import style from './App.module.css'
 import 'react-toastify/dist/ReactToastify.css';
 import DraggableComp from './components/DraggableComp'
 import Draggable from 'react-draggable'
@@ -54,20 +54,7 @@ function App() {
 
   // console.log(showDraggable);
 
-  // pegarBichoCerto(showDraggable)
-  
-  // function pegarBichoCerto(showDraggable) {
-  //   api.get(`/character/?id=${showDraggable}`).then((response) => {
-  //     if(!response.data.results){
-  //       console.log("Vazio")
-  //     }
-  //     setDataDraggable(response.data.results)
-  //     // console.log(dataDraggable);
-  //   });
-  //      // <DraggableComp name={id.name} species={id.species} gender={id.gender} image={id.image} />
 
-
-  // }
 
   return (
     <>
@@ -113,17 +100,12 @@ function App() {
                <input type="text" placeholder="Name" value={name} onChange={(event) => setName(event.target.value)}/>
             </div>
             <div className={style.cardBox}>
-            
-            {data.map((item, index) => { 
-              return(
-                <>
-                <div key={index}>
-                  <CardApi name={item.name} species={item.species} gender={item.gender} image={item.image} type={item.type} status={item.status}/>
-                  <button onClick={() => setShowDraggable(index)}>Info</button>
-                </div>
+            {data.map((item, index) => 
+              <>
+                
+                <CardApi key={index} name={item.name} species={item.species} gender={item.gender} image={item.image} type={item.type} status={item.status}/>
               </>
-              )
-           })}
+            )}
             </div>
        </>
       }
