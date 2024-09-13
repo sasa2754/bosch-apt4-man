@@ -8,7 +8,7 @@ function Mapa() {
     <div className={style.wrapPage}>
     <App />
       <h2>Mapa</h2>
-          <MapContainer center={[-25.4248636,-49.2729555]} zoom={13} scrollWheelZoom={false} style={{width: '400px', height: '400px'}}>
+          <MapContainer center={[-25.4248636,-49.2729555]} zoom={13} scrollWheelZoom={false} style={{width: '50vw', height: '50vh'}}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

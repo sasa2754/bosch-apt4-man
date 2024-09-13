@@ -34,11 +34,13 @@
   justify-content: center;
   flex-direction: row;
   gap: 10px;
+  margin-bottom: 8px;
 }
 
 .input {
   width: 20vw;
-  height: 20px;
+  height: 30px;
+  padding: 8px;
   border-radius: 5px;
 }
 
@@ -52,6 +54,7 @@
   margin-top: 20px;
   /* width: 100%; */
   padding: 30px;
+  padding-bottom: 50px;
   padding-top: 50px;
   box-shadow: inset -6px 0px 20px 20px rgba(255, 61, 213, 0.678);
 }
